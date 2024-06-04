@@ -1,0 +1,24 @@
+parameters:
+    paths:
+        - src/
+
+    # Level 9 is the highest level
+    level: 9
+
+    ignoreErrors:
+        - '#Function .*\(.*\) has parameter \$.* with generic class .* but does not specify its types: .*#'
+        - '#Method .*::.*\(\) has parameter \$.* with generic class .* but does not specify its types: .*#'
+        - '#Function .*\(.*\) has parameter \$.* with no value type specified in iterable type array#'
+        - '#Method .*::.*\(\) has parameter \$.* with no value type specified in iterable type array#'
+        - '#Method .*::.*\(\) return type with generic class .* does not specify its types: .*#'
+        - '#Function .*\(.*\) return type with generic class .* does not specify its types: .*#'
+        - '#Property .*::\$.* type has no value type specified in iterable type array#'
+        - '#Property .*::\$.* with generic class .* does not specify its types: .*#'
+        - '#Unable to resolve the template type .* in call to function .*#'
+        - '#Property .*::\$.* \(array\) does not accept mixed#'
+#        - '#PHPDoc tag @var#'
+
+#    excludePaths:
+#        - ./*/*/FileToBeExcluded.php
+
+    # checkMissingIterableValueType: false

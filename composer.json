@@ -1,0 +1,89 @@
+{
+    "name": "atendwa/mpesa-artisan",
+    "description": "A Laravel package designed to seamlessly integrate M-Pesa daraja APIs in your laravel project.",
+    "keywords": [
+        "Atendwa", "laravel", "mpesa", "daraja", "safaricom", "mpesa-artisan",
+        "mpesa api", "daraja api", "mpesa laravel", "mpesa daraja", "mpesa integration",
+        "b2c", "b2b", "c2b", "stk push","stk query", "mpesa online", "mpesa online payment"
+    ],
+    "homepage": "https://github.com/atendwa/mpesa-artisan",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anthony Tendwa Michael",
+            "email": "tendwa.am@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "ext-openssl": "*"
+    },
+    "require-dev": {
+        "larastan/larastan": "^2.0",
+        "laravel/pint": "^1.16",
+        "nunomaduro/collision": "^8.1.1||^7.10.0",
+        "nunomaduro/phpinsights": "^2.11",
+        "orchestra/testbench": "^9.0.0||^8.22.0",
+        "pestphp/pest": "^2.34",
+        "pestphp/pest-plugin-arch": "^2.7",
+        "pestphp/pest-plugin-laravel": "^2.3",
+        "phpstan/extension-installer": "^1.3",
+        "phpstan/phpstan-deprecation-rules": "^1.1",
+        "phpstan/phpstan-phpunit": "^1.3",
+        "spatie/laravel-ray": "^1.35"
+    },
+    "autoload": {
+        "psr-4": {
+            "Atendwa\\MpesaArtisan\\": "src/"
+        },
+        "files": [
+            "src/Helpers/services.php",
+            "src/Helpers/mpesa.php",
+            "src/Helpers/core.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Atendwa\\MpesaArtisan\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@composer run prepare",
+        "clear": "@php vendor/bin/testbench package:purge-mpesa-artisan --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": [
+            "@composer run prepare",
+            "@php vendor/bin/testbench workbench:build --ansi"
+        ],
+        "start": [
+            "Composer\\Config::disableProcessTimeout",
+            "@composer run build",
+            "@php vendor/bin/testbench serve"
+        ],
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true,
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Atendwa\\MpesaArtisan\\MpesaArtisanServiceProvider"
+            ],
+            "aliases": {
+                "Daraja": "Atendwa\\MpesaArtisan\\Facades\\Daraja"
+            }
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
