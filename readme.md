@@ -51,7 +51,7 @@ This package has a lot to offer, but I think you'll love these features the most
 1. **Run the following command in your terminal to install the package:**
 
    ```bash
-   composer require atendwa/mpesa-artisansh
+   composer require atendwa/mpesa-artisan
    ```
 
 2. **Publish the Configuration File**
